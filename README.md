@@ -1,4 +1,4 @@
-# 🧪 Testinator
+# 🧪 Testinator (Work in progress)
 
 **Testinator** is an open-source framework that lets you describe and run backend test cases in **natural language**, powered by LLMs.
 
