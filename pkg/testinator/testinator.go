@@ -64,7 +64,7 @@ func (t *Testinator) executeStep(step model.TestStep, executionContext internal_
 	response, err := t.driver.SendRequest(generatedPrompt)
 	log.Printf("LLM response: %v", response)
 	if strings.HasPrefix(response, "```json") {
-		response = strings.TrimPrefix(response, "```json`")
+		response = strings.TrimPrefix(response, "```json")
 	}
 	if strings.HasSuffix(response, "```") {
 		response = strings.TrimSuffix(response, "```")
