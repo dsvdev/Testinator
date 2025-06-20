@@ -10,6 +10,7 @@ import (
 	"github.com/dsvdev/Testinator/pkg/llm"
 	"github.com/dsvdev/Testinator/pkg/model"
 	"log"
+	"os"
 )
 
 type Testinator struct {
@@ -18,7 +19,7 @@ type Testinator struct {
 	openApi string
 }
 
-func New(driver llm.LLMDriver) *Testinator {
+func NewTestinator(driver llm.LLMDriver) *Testinator {
 	c := cfg.TestinatorConfig
 	return &Testinator{
 		driver:  driver,
@@ -28,7 +29,11 @@ func New(driver llm.LLMDriver) *Testinator {
 }
 
 func (t *Testinator) WithOpenApi(path string) {
-	t.openApi = ""
+	data, err := os.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+	t.openApi = string(data)
 }
 
 func (t *Testinator) OpenApi() string {
