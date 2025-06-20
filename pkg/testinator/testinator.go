@@ -11,6 +11,7 @@ import (
 	"github.com/dsvdev/Testinator/pkg/model"
 	"log"
 	"os"
+	"strings"
 )
 
 type Testinator struct {
@@ -62,6 +63,12 @@ func (t *Testinator) executeStep(step model.TestStep, executionContext internal_
 
 	response, err := t.driver.SendRequest(generatedPrompt)
 	log.Printf("LLM response: %v", response)
+	if strings.HasPrefix(response, "```json") {
+		strings.TrimPrefix(response, "```json`")
+	}
+	if strings.HasSuffix(response, "```") {
+		strings.TrimSuffix(response, "```")
+	}
 
 	if err != nil {
 		return nil, err
