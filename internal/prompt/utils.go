@@ -35,5 +35,6 @@ func Generate(step model.TestStep, executionContext internal_model.TestExecution
 	sb.WriteString("\nNext step:\n")
 	sb.WriteString(string(step))
 	sb.WriteString("YOU MUST RETURN ONLY VALID JSON IS ANSWER, DO NOT ADD ANYTHING ELSE\n")
+	sb.WriteString("YOU BEGIN FROM { \"action\": ... AND END WITH }, DO NOT USE ANY FORMATTING SYMBOLS\n")
 	return sb.String()
 }
